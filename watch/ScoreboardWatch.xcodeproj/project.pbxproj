@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152724223C709715C1CFA348 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69944A08E770B9A508DCDBF /* Credentials.swift */; };
 		1B25FAE809FE933F72636F26 /* web.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E9B23CEECB2C802BF48183 /* web.xml */; };
 		3169133617612962AFE648C3 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C432F4A2677E73534E7622A8 /* Scoreboard.swift */; };
+		4A4CECCE13D07A8D1B158EE6 /* ScoreboardClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E62964DDD37B810A367C74 /* ScoreboardClientTests.swift */; };
+		88BFB1EB684FCF8F669560D3 /* ScoreStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3590EC8EB7587554ED2500F1 /* ScoreStore.swift */; };
 		9AB8375C8CA777552E78C28B /* ScoreboardXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816288D44EDA4B4A1637CCB8 /* ScoreboardXML.swift */; };
 		A7B7A7A3BCAE1D95C62CE7BD /* ScoreboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148BAEEA3277F286F7BFAE5 /* ScoreboardTests.swift */; };
 		C8D2EC2ED996C1844D1E57D4 /* scraper.xml in Resources */ = {isa = PBXBuildFile; fileRef = 03357FF34EA4BC4C500BFA43 /* scraper.xml */; };
+		D0758645C88EAF04577266F9 /* ScoreboardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463961A2B8C89EFEA552939B /* ScoreboardClient.swift */; };
 		D571B3A4A3A68DEB0078941E /* ScoreboardXMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB224AA57A9710466A8503F /* ScoreboardXMLTests.swift */; };
+		E721F3634857EAD4F2AB886F /* ScoreStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB77EFB3B3FD06F8D2BE49 /* ScoreStoreTests.swift */; };
 		E90C621DEF6364322B7C4490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E842D201E67CD18A67EDD5 /* Assets.xcassets */; };
 		F895509861BBACFC049C9079 /* ScoreboardWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49C7A61C7BCBD4AFC2341D6 /* ScoreboardWatchApp.swift */; };
 /* End PBXBuildFile section */
@@ -31,12 +36,17 @@
 		03357FF34EA4BC4C500BFA43 /* scraper.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = scraper.xml; sourceTree = "<group>"; };
 		0CF40F546B2FF026AC8803AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3148BAEEA3277F286F7BFAE5 /* ScoreboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardTests.swift; sourceTree = "<group>"; };
+		3590EC8EB7587554ED2500F1 /* ScoreStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStore.swift; sourceTree = "<group>"; };
+		463961A2B8C89EFEA552939B /* ScoreboardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardClient.swift; sourceTree = "<group>"; };
 		53E842D201E67CD18A67EDD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EB224AA57A9710466A8503F /* ScoreboardXMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardXMLTests.swift; sourceTree = "<group>"; };
 		79E9B23CEECB2C802BF48183 /* web.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = web.xml; sourceTree = "<group>"; };
 		816288D44EDA4B4A1637CCB8 /* ScoreboardXML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardXML.swift; sourceTree = "<group>"; };
 		9713AE95E162CDF8B469FA5C /* ScoreboardWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoreboardWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C432F4A2677E73534E7622A8 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
+		D2E62964DDD37B810A367C74 /* ScoreboardClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardClientTests.swift; sourceTree = "<group>"; };
+		D69944A08E770B9A508DCDBF /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		D9FB77EFB3B3FD06F8D2BE49 /* ScoreStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStoreTests.swift; sourceTree = "<group>"; };
 		E6D25153FFA69B49B3DDB67B /* ScoreboardWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreboardWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49C7A61C7BCBD4AFC2341D6 /* ScoreboardWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardWatchApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +68,7 @@
 				0CF40F546B2FF026AC8803AB /* Info.plist */,
 				F49C7A61C7BCBD4AFC2341D6 /* ScoreboardWatchApp.swift */,
 				E35B81A853E258B30004F76A /* Model */,
+				B1F4F07882337E305C2CA0AC /* Sync */,
 			);
 			path = ScoreboardWatch;
 			sourceTree = "<group>";
@@ -74,11 +85,23 @@
 		A825DF44E814F714DD7E9599 /* ScoreboardWatchTests */ = {
 			isa = PBXGroup;
 			children = (
+				D2E62964DDD37B810A367C74 /* ScoreboardClientTests.swift */,
 				3148BAEEA3277F286F7BFAE5 /* ScoreboardTests.swift */,
 				6EB224AA57A9710466A8503F /* ScoreboardXMLTests.swift */,
+				D9FB77EFB3B3FD06F8D2BE49 /* ScoreStoreTests.swift */,
 				73CD37AF3829F8DD472D55AB /* Fixtures */,
 			);
 			path = ScoreboardWatchTests;
+			sourceTree = "<group>";
+		};
+		B1F4F07882337E305C2CA0AC /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				D69944A08E770B9A508DCDBF /* Credentials.swift */,
+				463961A2B8C89EFEA552939B /* ScoreboardClient.swift */,
+				3590EC8EB7587554ED2500F1 /* ScoreStore.swift */,
+			);
+			path = Sync;
 			sourceTree = "<group>";
 		};
 		E35B81A853E258B30004F76A /* Model */ = {
@@ -203,6 +226,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E721F3634857EAD4F2AB886F /* ScoreStoreTests.swift in Sources */,
+				4A4CECCE13D07A8D1B158EE6 /* ScoreboardClientTests.swift in Sources */,
 				A7B7A7A3BCAE1D95C62CE7BD /* ScoreboardTests.swift in Sources */,
 				D571B3A4A3A68DEB0078941E /* ScoreboardXMLTests.swift in Sources */,
 			);
@@ -212,7 +237,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				152724223C709715C1CFA348 /* Credentials.swift in Sources */,
+				88BFB1EB684FCF8F669560D3 /* ScoreStore.swift in Sources */,
 				3169133617612962AFE648C3 /* Scoreboard.swift in Sources */,
+				D0758645C88EAF04577266F9 /* ScoreboardClient.swift in Sources */,
 				F895509861BBACFC049C9079 /* ScoreboardWatchApp.swift in Sources */,
 				9AB8375C8CA777552E78C28B /* ScoreboardXML.swift in Sources */,
 			);
