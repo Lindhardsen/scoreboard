@@ -21,6 +21,9 @@ struct ConfigView: View {
                 .autocorrectionDisabled()
             SecureField("Password", text: $password)
                 .textContentType(.password)
+            if let notice = store.notice, error == nil {
+                Text(notice).font(.footnote).foregroundStyle(.orange)
+            }
             if let error {
                 Text(error).font(.footnote).foregroundStyle(.red)
             }
@@ -32,6 +35,12 @@ struct ConfigView: View {
             .disabled(signingIn || server.isEmpty || username.isEmpty || password.isEmpty)
         }
         .navigationTitle("Scoreboard")
+        .onAppear {
+            if let last = store.lastSignIn, server.isEmpty, username.isEmpty {
+                server = last.server
+                username = last.username
+            }
+        }
     }
 
     private func signIn() async {

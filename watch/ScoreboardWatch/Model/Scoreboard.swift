@@ -1,10 +1,10 @@
 import Foundation
 
-enum Side: String, CaseIterable, Sendable {
+enum Side: String, CaseIterable, Codable, Sendable {
     case home, away
 }
 
-struct TeamState: Equatable, Sendable {
+struct TeamState: Codable, Equatable, Sendable {
     var name: String
     var sets: Int
     var points: Int
@@ -15,7 +15,7 @@ struct TeamState: Equatable, Sendable {
 
 /// The scoreboard as the web controller models it. Scoring rules mirror
 /// `score()` and `reset()` in html/scoreboard.js.
-struct Scoreboard: Equatable, Sendable {
+struct Scoreboard: Codable, Equatable, Sendable {
     var home: TeamState
     var away: TeamState
     var serving: Side?

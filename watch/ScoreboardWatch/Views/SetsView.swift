@@ -9,6 +9,14 @@ struct SetsView: View {
     @State private var showingSettings = false
 
     var body: some View {
+        if store.loaded {
+            sets
+        } else {
+            LoadingBoardView(store: store)
+        }
+    }
+
+    private var sets: some View {
         ScrollView {
             VStack(spacing: 6) {
                 ForEach(Side.allCases, id: \.self) { side in

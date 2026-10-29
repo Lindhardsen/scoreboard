@@ -5,9 +5,18 @@ import XCTest
 final class ScoreStoreTests: XCTestCase {
     private let creds = Credentials(server: URL(string: "https://example.test")!, username: "jan", token: "tok")
 
-    private func makeStore(api: FakeAPI, signedIn: Bool = true) -> (ScoreStore, InMemoryCredentials) {
+    private func makeStore(api: FakeAPI, signedIn: Bool = true,
+                           persistence: InMemoryBoardStore = InMemoryBoardStore()) -> (ScoreStore, InMemoryCredentials) {
         let storage = InMemoryCredentials(signedIn ? creds : nil)
-        return (ScoreStore(api: api, credentials: storage, retryDelays: [.milliseconds(1)]), storage)
+        return (ScoreStore(api: api, credentials: storage, persistence: persistence, retryDelays: [.milliseconds(1)]), storage)
+    }
+
+    /// A signed-in store that has loaded the server's board, ready to score.
+    private func makeLoadedStore(api: FakeAPI) async -> ScoreStore {
+        let (store, _) = makeStore(api: api)
+        await store.refresh()
+        XCTAssertTrue(store.loaded)
+        return store
     }
 
     /// Lets the store's upload task run until it goes idle.
@@ -77,15 +86,15 @@ final class ScoreStoreTests: XCTestCase {
         let api = FakeAPI()
         var remote = Scoreboard.empty
         remote.home.points = 20
+        let store = await makeLoadedStore(api: api)
         await api.setRemote(remote)
         await api.setUploadError(.unreachable)
-        let (store, _) = makeStore(api: api)
         XCTAssertTrue(store.apply { $0.addPoint(.away); return true })
         for _ in 0..<100 where store.status != .offline { try? await Task.sleep(for: .milliseconds(2)) }
         XCTAssertEqual(store.status, .offline)
         await store.refresh()
         XCTAssertEqual(store.board.away.points, 1)
-        XCTAssertEqual(store.board.home.points, 0)
+        XCTAssertEqual(store.board.home.points, 0)  // server's 20 not adopted
         XCTAssertTrue(store.hasUnsentChanges)
 
         await api.setUploadError(nil)
@@ -97,7 +106,7 @@ final class ScoreStoreTests: XCTestCase {
 
     func testRapidChangesEndWithLatestStateUploaded() async {
         let api = FakeAPI()
-        let (store, _) = makeStore(api: api)
+        let store = await makeLoadedStore(api: api)
         for _ in 0..<5 {
             store.apply { $0.addPoint(.home); return true }
         }
@@ -110,7 +119,7 @@ final class ScoreStoreTests: XCTestCase {
 
     func testRejectedChangeDoesNotUpload() async {
         let api = FakeAPI()
-        let (store, _) = makeStore(api: api)
+        let store = await makeLoadedStore(api: api)
         XCTAssertFalse(store.apply { $0.removePoint(.home) })
         XCTAssertFalse(store.hasUnsentChanges)
         let uploads = await api.uploads
@@ -119,8 +128,9 @@ final class ScoreStoreTests: XCTestCase {
 
     func testForbiddenUploadSignsOut() async {
         let api = FakeAPI()
-        await api.setUploadError(.forbidden)
         let (store, storage) = makeStore(api: api)
+        await store.refresh()
+        await api.setUploadError(.forbidden)
         store.apply { $0.addPoint(.home); return true }
         for _ in 0..<100 where store.credentials != nil { try? await Task.sleep(for: .milliseconds(2)) }
         XCTAssertNil(store.credentials)
@@ -133,7 +143,7 @@ final class ScoreStoreTests: XCTestCase {
     func testScraperRunningFlagFollowsUploadResult() async {
         let api = FakeAPI()
         await api.setScraperRunning(true)
-        let (store, _) = makeStore(api: api)
+        let store = await makeLoadedStore(api: api)
         store.apply { $0.addPoint(.home); return true }
         await settle(store)
         XCTAssertTrue(store.scraperRunning)
@@ -141,6 +151,105 @@ final class ScoreStoreTests: XCTestCase {
         store.apply { $0.addPoint(.home); return true }
         await settle(store)
         XCTAssertFalse(store.scraperRunning)
+    }
+
+    func testScoringDisabledUntilBoardLoaded() async {
+        let api = FakeAPI()
+        var remote = Scoreboard.empty
+        remote.home = TeamState(name: "Eksjö", sets: 2, points: 14, colorStyle: "background: rgb(0, 0, 255);")
+        await api.setRemote(remote)
+        await api.setFetchError(.unreachable)
+        let (store, _) = makeStore(api: api)
+        await store.refresh()
+        XCTAssertFalse(store.loaded)
+        XCTAssertFalse(store.apply { $0.addPoint(.home); return true })
+        let uploads = await api.uploads
+        XCTAssertTrue(uploads.isEmpty)
+
+        await api.setFetchError(nil)
+        await store.refresh()
+        XCTAssertTrue(store.loaded)
+        XCTAssertEqual(store.board, remote)
+    }
+
+    func testTapDuringSlowFirstLoadIsIgnored() async {
+        let api = FakeAPI()
+        var remote = Scoreboard.empty
+        remote.home.points = 14
+        await api.setRemote(remote)
+        await api.setFetchDelay(.milliseconds(100))
+        let (store, _) = makeStore(api: api)
+        let loading = Task { await store.refresh() }
+        try? await Task.sleep(for: .milliseconds(10))
+        XCTAssertFalse(store.apply { $0.addPoint(.home); return true })
+        await loading.value
+        XCTAssertEqual(store.board, remote)
+        let uploads = await api.uploads
+        XCTAssertTrue(uploads.isEmpty)
+    }
+
+    func testStaleFetchDoesNotOverwriteNewerLocalChange() async {
+        let api = FakeAPI()
+        let store = await makeLoadedStore(api: api)
+        await api.setFetchDelay(.milliseconds(100))
+        let refreshing = Task { await store.refresh() }  // captures the pre-tap server board
+        try? await Task.sleep(for: .milliseconds(10))
+        store.apply { $0.addPoint(.home); return true }
+        await settle(store)
+        XCTAssertFalse(store.hasUnsentChanges)
+        await refreshing.value
+        XCTAssertEqual(store.board.home.points, 1)
+    }
+
+    func testUnsentChangesSurviveRelaunch() async {
+        let api = FakeAPI()
+        // What a terminated app left behind: a point the server never confirmed.
+        var killed = Scoreboard.empty
+        killed.addPoint(.away)
+        let persistence = InMemoryBoardStore()
+        persistence.state = PersistedBoard(board: killed, unsent: true)
+
+        let (second, _) = makeStore(api: api, persistence: persistence)
+        XCTAssertTrue(second.loaded)
+        XCTAssertTrue(second.hasUnsentChanges)
+        XCTAssertEqual(second.board.away.points, 1)
+        await api.setUploadError(nil)
+        await second.refresh()
+        await settle(second)
+        let uploads = await api.uploads
+        XCTAssertEqual(uploads.last?.away.points, 1)
+    }
+
+    func testBoardSavedOnEveryChange() async {
+        let api = FakeAPI()
+        let persistence = InMemoryBoardStore()
+        let (store, _) = makeStore(api: api, persistence: persistence)
+        await store.refresh()
+        await api.setUploadError(.unreachable)
+        store.apply { $0.addPoint(.home); return true }
+        XCTAssertEqual(persistence.state?.board.home.points, 1)
+        XCTAssertEqual(persistence.state?.unsent, true)
+    }
+
+    func testForbiddenKeepsUnsentPointsForNextSignIn() async throws {
+        let api = FakeAPI()
+        let (store, _) = makeStore(api: api)
+        await store.refresh()
+        await api.setUploadError(.forbidden)
+        store.apply { $0.addPoint(.home); return true }
+        for _ in 0..<100 where store.credentials != nil { try? await Task.sleep(for: .milliseconds(2)) }
+        XCTAssertNil(store.credentials)
+        XCTAssertEqual(store.notice, "Session expired — sign in again")
+        XCTAssertEqual(store.lastSignIn?.server, "https://example.test")
+        XCTAssertEqual(store.lastSignIn?.username, "jan")
+
+        await api.setUploadError(nil)
+        try await store.signIn(server: "example.test", username: "jan", password: "pw")
+        await settle(store)
+        XCTAssertEqual(store.board.home.points, 1)
+        let uploads = await api.uploads
+        XCTAssertEqual(uploads.last?.home.points, 1)
+        XCTAssertNil(store.notice)
     }
 
     func testSignOutClearsCredentials() {
@@ -159,11 +268,15 @@ actor FakeAPI: ScoreboardAPI {
     private var uploadError: ClientError?
     private var tokenError: ClientError?
     private var scraperRunning = false
+    private var fetchError: ClientError?
+    private var fetchDelay: Duration?
 
     func setRemote(_ board: Scoreboard?) { remote = board }
     func setUploadError(_ error: ClientError?) { uploadError = error }
     func setTokenError(_ error: ClientError?) { tokenError = error }
     func setScraperRunning(_ running: Bool) { scraperRunning = running }
+    func setFetchError(_ error: ClientError?) { fetchError = error }
+    func setFetchDelay(_ delay: Duration?) { fetchDelay = delay }
 
     func fetchToken(server: URL, username: String, password: String) async throws -> String {
         tokenPasswords.append(password)
@@ -171,7 +284,12 @@ actor FakeAPI: ScoreboardAPI {
         return "tok"
     }
 
-    func fetchScoreboard(_ c: Credentials) async throws -> Scoreboard? { remote }
+    func fetchScoreboard(_ c: Credentials) async throws -> Scoreboard? {
+        if let fetchError { throw fetchError }
+        let snapshot = remote  // what the server had when the request arrived
+        if let fetchDelay { try? await Task.sleep(for: fetchDelay) }
+        return snapshot
+    }
 
     func upload(_ board: Scoreboard, _ c: Credentials) async throws -> UploadResult {
         uploadAttempts += 1
@@ -188,4 +306,10 @@ final class InMemoryCredentials: CredentialsStoring, @unchecked Sendable {
     func load() -> Credentials? { stored }
     func save(_ c: Credentials) throws { stored = c }
     func clear() { stored = nil }
+}
+
+final class InMemoryBoardStore: BoardPersisting, @unchecked Sendable {
+    var state: PersistedBoard?
+    func load() -> PersistedBoard? { state }
+    func save(_ state: PersistedBoard?) { self.state = state }
 }

@@ -27,6 +27,7 @@
 		E721F3634857EAD4F2AB886F /* ScoreStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB77EFB3B3FD06F8D2BE49 /* ScoreStoreTests.swift */; };
 		E90C621DEF6364322B7C4490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E842D201E67CD18A67EDD5 /* Assets.xcassets */; };
 		F895509861BBACFC049C9079 /* ScoreboardWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49C7A61C7BCBD4AFC2341D6 /* ScoreboardWatchApp.swift */; };
+		FD19D27E44BE655202FD20A2 /* BoardPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C0EC72DC03500FEDC961B3 /* BoardPersistence.swift */; };
 		FD29BC0631587A3BAA72C1D6 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D519650FA4992B37878B5C78 /* PointsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		5059EE258665B82A7605EC37 /* NamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesView.swift; sourceTree = "<group>"; };
 		53E842D201E67CD18A67EDD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EB224AA57A9710466A8503F /* ScoreboardXMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardXMLTests.swift; sourceTree = "<group>"; };
+		73C0EC72DC03500FEDC961B3 /* BoardPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPersistence.swift; sourceTree = "<group>"; };
 		79E9B23CEECB2C802BF48183 /* web.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = web.xml; sourceTree = "<group>"; };
 		7E628115390E1632B12B0B6D /* ScoreboardWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoreboardWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8162608187213D9D4AF3B5BC /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		B1F4F07882337E305C2CA0AC /* Sync */ = {
 			isa = PBXGroup;
 			children = (
+				73C0EC72DC03500FEDC961B3 /* BoardPersistence.swift */,
 				D69944A08E770B9A508DCDBF /* Credentials.swift */,
 				463961A2B8C89EFEA552939B /* ScoreboardClient.swift */,
 				3590EC8EB7587554ED2500F1 /* ScoreStore.swift */,
@@ -311,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD19D27E44BE655202FD20A2 /* BoardPersistence.swift in Sources */,
 				4BE8A33DC4F0A7695D8FAC9A /* ConfigView.swift in Sources */,
 				152724223C709715C1CFA348 /* Credentials.swift in Sources */,
 				4B9DE43D5C520852B62F5FA4 /* NamesView.swift in Sources */,

@@ -6,6 +6,14 @@ struct NamesView: View {
     @State private var drafts: [Side: String] = [:]
 
     var body: some View {
+        if store.loaded {
+            names
+        } else {
+            LoadingBoardView(store: store)
+        }
+    }
+
+    private var names: some View {
         Form {
             ForEach(Side.allCases, id: \.self) { side in
                 Section(side == .home ? "Home" : "Away") {

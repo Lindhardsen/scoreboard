@@ -14,20 +14,39 @@ final class ScoreStore: ObservableObject {
     @Published private(set) var scraperRunning = false
     /// nil means the app should show the sign-in screen.
     @Published private(set) var credentials: Credentials?
+    /// False until the server's board has been read (or unsent local points restored).
+    /// Scoring is refused until then so a blank board can never overwrite the match.
+    @Published private(set) var loaded = false
+    /// Shown on the sign-in screen, e.g. after the server rejected the token.
+    @Published private(set) var notice: String?
+    /// Server and username of the session that just ended, to prefill sign-in.
+    @Published private(set) var lastSignIn: (server: String, username: String)?
 
     private let api: ScoreboardAPI
     private let credentialStore: CredentialsStoring
+    private let persistence: BoardPersisting
     private let retryDelays: [Duration]
     @Published private var dirty = false
     @Published private var uploadTask: Task<Void, Never>?
+    /// Bumped on every local change, so a fetch that started earlier can't replace it.
+    private var revision = 0
 
     init(api: ScoreboardAPI,
          credentials: CredentialsStoring,
+         persistence: BoardPersisting = UserDefaultsBoardStore(),
          retryDelays: [Duration] = [.seconds(1), .seconds(2), .seconds(5), .seconds(10)]) {
         self.api = api
         self.credentialStore = credentials
+        self.persistence = persistence
         self.retryDelays = retryDelays
         self.credentials = credentials.load()
+        if let saved = persistence.load() {
+            board = saved.board
+            // Unsent points win over the server, so they can be scored on straight away.
+            // A confirmed board may be stale (the web may have been used), so reload it first.
+            dirty = saved.unsent
+            loaded = saved.unsent
+        }
     }
 
     /// True until the server has confirmed the latest local change.
@@ -47,17 +66,36 @@ final class ScoreStore: ObservableObject {
         let creds = Credentials(server: url, username: user, token: token)
         try? credentialStore.save(creds)
         credentials = creds
+        notice = nil
         await refresh()
     }
 
+    /// Sign-out chosen by the user: forgets the board and anything unsent.
     func signOut() {
+        endSession()
+        dirty = false
+        loaded = false
+        board = .empty
+        persistence.save(nil)
+        status = .synced
+    }
+
+    /// The server rejected the token: ask for a new sign-in but keep unsent points,
+    /// which are pushed as soon as the next sign-in succeeds.
+    private func tokenRejected() {
+        endSession()
+        notice = "Session expired — sign in again"
+    }
+
+    private func endSession() {
         uploadTask?.cancel()
         uploadTask = nil
-        dirty = false
+        if let credentials {
+            lastSignIn = (credentials.server.absoluteString, credentials.username)
+        }
         credentialStore.clear()
         credentials = nil
         scraperRunning = false
-        status = .synced
     }
 
     /// Picks up changes made elsewhere (e.g. the web page) unless the watch has
@@ -68,23 +106,30 @@ final class ScoreStore: ObservableObject {
             startUploading()
             return
         }
+        let startRevision = revision
         do {
             let remote = try await api.fetchScoreboard(creds)
-            guard !hasUnsentChanges, credentials == creds else { return }
+            guard revision == startRevision, !hasUnsentChanges, credentials == creds else { return }
             board = remote ?? .empty
+            loaded = true
+            persistence.save(PersistedBoard(board: board, unsent: false))
             status = .synced
         } catch {
             if !hasUnsentChanges { status = .offline }
         }
     }
 
-    /// Applies a scoring change; returns false (and sends nothing) when the change was rejected.
+    /// Applies a scoring change; returns false (and sends nothing) when the change was
+    /// rejected or the server's board hasn't been loaded yet.
     @discardableResult
     func apply(_ change: (inout Scoreboard) -> Bool) -> Bool {
+        guard loaded else { return false }
         var updated = board
         guard change(&updated) else { return false }
         board = updated
+        revision += 1
         dirty = true
+        persistence.save(PersistedBoard(board: board, unsent: true))
         startUploading()
         return true
     }
@@ -108,9 +153,11 @@ final class ScoreStore: ObservableObject {
                 scraperRunning = result.scraperRunning
                 failures = 0
             } catch ClientError.forbidden {
-                // The token no longer matches users.json: sign in again.
-                uploadTask = nil
-                signOut()
+                // A cancelled upload's late 403 belongs to a session that has already ended.
+                guard !Task.isCancelled else { return }
+                // The token no longer matches users.json: the snapshot was not stored.
+                dirty = true
+                tokenRejected()
                 return
             } catch {
                 guard !Task.isCancelled else { return }
@@ -122,6 +169,9 @@ final class ScoreStore: ObservableObject {
         }
         guard !Task.isCancelled else { return }
         uploadTask = nil
+        if !dirty {
+            persistence.save(PersistedBoard(board: board, unsent: false))
+        }
         status = .synced
     }
 }

@@ -6,6 +6,14 @@ struct PointsView: View {
     @ObservedObject var store: ScoreStore
 
     var body: some View {
+        if store.loaded {
+            points
+        } else {
+            LoadingBoardView(store: store)
+        }
+    }
+
+    private var points: some View {
         VStack(spacing: 4) {
             if store.scraperRunning {
                 ScraperBanner()
@@ -65,5 +73,26 @@ private struct TeamPointsButton: View {
         .contentShape(RoundedRectangle(cornerRadius: 12))
         .accessibilityElement(children: .combine)
         .accessibilityHint("Tap to add a point, hold to remove one")
+    }
+}
+
+/// Shown until the server's board is known, so nobody scores on a blank board.
+struct LoadingBoardView: View {
+    @ObservedObject var store: ScoreStore
+
+    var body: some View {
+        VStack(spacing: 8) {
+            if store.status == .offline {
+                Text("Can't load scoreboard")
+                    .font(.headline)
+                Button("Try again") {
+                    Task { await store.refresh() }
+                }
+            } else {
+                ProgressView()
+                Text("Loading scoreboard…")
+                    .font(.footnote)
+            }
+        }
     }
 }
