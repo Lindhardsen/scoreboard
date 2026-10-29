@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B25FAE809FE933F72636F26 /* web.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E9B23CEECB2C802BF48183 /* web.xml */; };
 		3169133617612962AFE648C3 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C432F4A2677E73534E7622A8 /* Scoreboard.swift */; };
+		9AB8375C8CA777552E78C28B /* ScoreboardXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816288D44EDA4B4A1637CCB8 /* ScoreboardXML.swift */; };
 		A7B7A7A3BCAE1D95C62CE7BD /* ScoreboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148BAEEA3277F286F7BFAE5 /* ScoreboardTests.swift */; };
+		C8D2EC2ED996C1844D1E57D4 /* scraper.xml in Resources */ = {isa = PBXBuildFile; fileRef = 03357FF34EA4BC4C500BFA43 /* scraper.xml */; };
+		D571B3A4A3A68DEB0078941E /* ScoreboardXMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB224AA57A9710466A8503F /* ScoreboardXMLTests.swift */; };
 		E90C621DEF6364322B7C4490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E842D201E67CD18A67EDD5 /* Assets.xcassets */; };
 		F895509861BBACFC049C9079 /* ScoreboardWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49C7A61C7BCBD4AFC2341D6 /* ScoreboardWatchApp.swift */; };
 /* End PBXBuildFile section */
@@ -24,9 +28,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03357FF34EA4BC4C500BFA43 /* scraper.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = scraper.xml; sourceTree = "<group>"; };
 		0CF40F546B2FF026AC8803AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3148BAEEA3277F286F7BFAE5 /* ScoreboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardTests.swift; sourceTree = "<group>"; };
 		53E842D201E67CD18A67EDD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6EB224AA57A9710466A8503F /* ScoreboardXMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardXMLTests.swift; sourceTree = "<group>"; };
+		79E9B23CEECB2C802BF48183 /* web.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = web.xml; sourceTree = "<group>"; };
+		816288D44EDA4B4A1637CCB8 /* ScoreboardXML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardXML.swift; sourceTree = "<group>"; };
 		9713AE95E162CDF8B469FA5C /* ScoreboardWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoreboardWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C432F4A2677E73534E7622A8 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		E6D25153FFA69B49B3DDB67B /* ScoreboardWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreboardWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,10 +62,21 @@
 			path = ScoreboardWatch;
 			sourceTree = "<group>";
 		};
+		73CD37AF3829F8DD472D55AB /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				03357FF34EA4BC4C500BFA43 /* scraper.xml */,
+				79E9B23CEECB2C802BF48183 /* web.xml */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
 		A825DF44E814F714DD7E9599 /* ScoreboardWatchTests */ = {
 			isa = PBXGroup;
 			children = (
 				3148BAEEA3277F286F7BFAE5 /* ScoreboardTests.swift */,
+				6EB224AA57A9710466A8503F /* ScoreboardXMLTests.swift */,
+				73CD37AF3829F8DD472D55AB /* Fixtures */,
 			);
 			path = ScoreboardWatchTests;
 			sourceTree = "<group>";
@@ -66,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				C432F4A2677E73534E7622A8 /* Scoreboard.swift */,
+				816288D44EDA4B4A1637CCB8 /* ScoreboardXML.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,6 +125,7 @@
 			buildConfigurationList = 247506BCDC7AA9A23C4F1F16 /* Build configuration list for PBXNativeTarget "ScoreboardWatchTests" */;
 			buildPhases = (
 				39E622427904AFC97FD1C69D /* Sources */,
+				4F5F53BBEAF32CF8C5C2D4D8 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -158,6 +179,15 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4F5F53BBEAF32CF8C5C2D4D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8D2EC2ED996C1844D1E57D4 /* scraper.xml in Resources */,
+				1B25FAE809FE933F72636F26 /* web.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9396F1A017195D56D65D50E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -174,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7B7A7A3BCAE1D95C62CE7BD /* ScoreboardTests.swift in Sources */,
+				D571B3A4A3A68DEB0078941E /* ScoreboardXMLTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +214,7 @@
 			files = (
 				3169133617612962AFE648C3 /* Scoreboard.swift in Sources */,
 				F895509861BBACFC049C9079 /* ScoreboardWatchApp.swift in Sources */,
+				9AB8375C8CA777552E78C28B /* ScoreboardXML.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

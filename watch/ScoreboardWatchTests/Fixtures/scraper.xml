@@ -1,0 +1,32 @@
+<div xmlns="http://www.w3.org/1999/xhtml">
+    <div id="scoreboard" class="scoreboard">
+        <div class="home">
+            <div id="home_set" class="set">3</div>
+            <div id="home_color" class="color" style="background: rgb(0, 0, 255);"> </div>
+            <div id="home_team" class="team" contenteditable="true">Sollentuna VK C</div>
+            <div id="home_serve" class="serve serving"> </div>
+        <div class="ended-sets">
+        <div id="home_ended_1" class="ended" data-set="1">25</div>
+        <div id="home_ended_2" class="ended" data-set="2">22</div>
+        <div id="home_ended_3" class="ended" data-set="3">25</div>
+        <div id="home_ended_4" class="ended" data-set="4">25</div>
+        </div>
+        </div>
+        <div class="away">
+            <div id="away_set" class="set">1</div>
+            <div id="away_color" class="color"> </div>
+            <div id="away_team" class="team" contenteditable="true">Vallentuna VBK B</div>
+            <div id="away_serve" class="serve"> </div>
+            <div class="ended-sets">
+            <div id="away_ended_1" class="ended" data-set="1">20</div>
+            <div id="away_ended_2" class="ended" data-set="2">25</div>
+            <div id="away_ended_3" class="ended" data-set="3">18</div>
+            <div id="away_ended_4" class="ended" data-set="4">23</div>
+            </div>
+        </div>
+    </div>
+    <div id="highlight" class="highlight home-highlight">
+        <div class="highlight-desc">Ace</div>
+        <div class="highlight-player">7 Anna</div>
+    </div>
+</div>
