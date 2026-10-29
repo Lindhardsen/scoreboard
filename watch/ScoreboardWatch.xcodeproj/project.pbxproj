@@ -239,16 +239,16 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					181CAFF99FE73E0CA43C4BE2 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = AQ97THYVZU;
 						ProvisioningStyle = Automatic;
 					};
 					946A4D8291C023196E0437F2 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = AQ97THYVZU;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 181CAFF99FE73E0CA43C4BE2;
 					};
 					E722871AB3FA1683AB8B5038 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = AQ97THYVZU;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -405,7 +405,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AQ97THYVZU;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -457,7 +457,7 @@
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.lindhardsen.scoreboard.watchkitapp;
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = Release;
@@ -473,7 +473,7 @@
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.lindhardsen.scoreboard.watchkitapp;
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = Debug;
@@ -533,7 +533,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AQ97THYVZU;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
