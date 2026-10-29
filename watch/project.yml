@@ -41,6 +41,17 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         TEST_HOST: "$(BUILT_PRODUCTS_DIR)/ScoreboardWatch.app/ScoreboardWatch"
         BUNDLE_LOADER: "$(TEST_HOST)"
+  ScoreboardWatchUITests:
+    type: bundle.ui-testing
+    platform: watchOS
+    sources: [ScoreboardWatchUITests]
+    dependencies:
+      - target: ScoreboardWatch
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.lindhardsen.scoreboard.watchkitapp.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: ScoreboardWatch
 schemes:
   ScoreboardWatch:
     build:
@@ -48,3 +59,10 @@ schemes:
         ScoreboardWatch: all
     test:
       targets: [ScoreboardWatchTests]
+  ScoreboardWatchUITests:
+    build:
+      targets:
+        ScoreboardWatch: all
+        ScoreboardWatchUITests: [test]
+    test:
+      targets: [ScoreboardWatchUITests]

@@ -9,20 +9,35 @@
 /* Begin PBXBuildFile section */
 		152724223C709715C1CFA348 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69944A08E770B9A508DCDBF /* Credentials.swift */; };
 		1B25FAE809FE933F72636F26 /* web.xml in Resources */ = {isa = PBXBuildFile; fileRef = 79E9B23CEECB2C802BF48183 /* web.xml */; };
+		231056F5F7FEB02A8981F4CD /* ScoringFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17DF103E7F52C0490E93CC8 /* ScoringFlowUITests.swift */; };
 		3169133617612962AFE648C3 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C432F4A2677E73534E7622A8 /* Scoreboard.swift */; };
 		4A4CECCE13D07A8D1B158EE6 /* ScoreboardClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E62964DDD37B810A367C74 /* ScoreboardClientTests.swift */; };
+		4B9DE43D5C520852B62F5FA4 /* NamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059EE258665B82A7605EC37 /* NamesView.swift */; };
+		4BE8A33DC4F0A7695D8FAC9A /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8162608187213D9D4AF3B5BC /* ConfigView.swift */; };
+		57EFFA206FCA9A0DC1FB72F2 /* TeamColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ED9135F48A9B56C50CEDDD /* TeamColor.swift */; };
 		88BFB1EB684FCF8F669560D3 /* ScoreStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3590EC8EB7587554ED2500F1 /* ScoreStore.swift */; };
 		9AB8375C8CA777552E78C28B /* ScoreboardXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816288D44EDA4B4A1637CCB8 /* ScoreboardXML.swift */; };
+		A3D726BDB9E27DCE0CCAB9F8 /* TeamColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48EA0D0D360D8ACAA1F0A /* TeamColorTests.swift */; };
 		A7B7A7A3BCAE1D95C62CE7BD /* ScoreboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148BAEEA3277F286F7BFAE5 /* ScoreboardTests.swift */; };
+		BCA62959DB3428B30509A36B /* SyncBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF00FEE0221EDF8D89B5257 /* SyncBadge.swift */; };
 		C8D2EC2ED996C1844D1E57D4 /* scraper.xml in Resources */ = {isa = PBXBuildFile; fileRef = 03357FF34EA4BC4C500BFA43 /* scraper.xml */; };
+		CAB7586E50FEAAE7320175EE /* SetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085BECCC4F033E30A7C1A1FA /* SetsView.swift */; };
 		D0758645C88EAF04577266F9 /* ScoreboardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463961A2B8C89EFEA552939B /* ScoreboardClient.swift */; };
 		D571B3A4A3A68DEB0078941E /* ScoreboardXMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB224AA57A9710466A8503F /* ScoreboardXMLTests.swift */; };
 		E721F3634857EAD4F2AB886F /* ScoreStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB77EFB3B3FD06F8D2BE49 /* ScoreStoreTests.swift */; };
 		E90C621DEF6364322B7C4490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E842D201E67CD18A67EDD5 /* Assets.xcassets */; };
 		F895509861BBACFC049C9079 /* ScoreboardWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49C7A61C7BCBD4AFC2341D6 /* ScoreboardWatchApp.swift */; };
+		FD29BC0631587A3BAA72C1D6 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D519650FA4992B37878B5C78 /* PointsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B3959683C4C251D6B38C169A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C4B4DAE691FB6974497C998 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 181CAFF99FE73E0CA43C4BE2;
+			remoteInfo = ScoreboardWatch;
+		};
 		E14F58C5E8AF435C43454A62 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2C4B4DAE691FB6974497C998 /* Project object */;
@@ -34,29 +49,47 @@
 
 /* Begin PBXFileReference section */
 		03357FF34EA4BC4C500BFA43 /* scraper.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = scraper.xml; sourceTree = "<group>"; };
+		085BECCC4F033E30A7C1A1FA /* SetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsView.swift; sourceTree = "<group>"; };
 		0CF40F546B2FF026AC8803AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3148BAEEA3277F286F7BFAE5 /* ScoreboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardTests.swift; sourceTree = "<group>"; };
 		3590EC8EB7587554ED2500F1 /* ScoreStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStore.swift; sourceTree = "<group>"; };
 		463961A2B8C89EFEA552939B /* ScoreboardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardClient.swift; sourceTree = "<group>"; };
+		5059EE258665B82A7605EC37 /* NamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesView.swift; sourceTree = "<group>"; };
 		53E842D201E67CD18A67EDD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EB224AA57A9710466A8503F /* ScoreboardXMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardXMLTests.swift; sourceTree = "<group>"; };
 		79E9B23CEECB2C802BF48183 /* web.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = web.xml; sourceTree = "<group>"; };
+		7E628115390E1632B12B0B6D /* ScoreboardWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoreboardWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8162608187213D9D4AF3B5BC /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		816288D44EDA4B4A1637CCB8 /* ScoreboardXML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardXML.swift; sourceTree = "<group>"; };
 		9713AE95E162CDF8B469FA5C /* ScoreboardWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoreboardWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEF00FEE0221EDF8D89B5257 /* SyncBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncBadge.swift; sourceTree = "<group>"; };
+		B4ED9135F48A9B56C50CEDDD /* TeamColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamColor.swift; sourceTree = "<group>"; };
+		BCE48EA0D0D360D8ACAA1F0A /* TeamColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamColorTests.swift; sourceTree = "<group>"; };
 		C432F4A2677E73534E7622A8 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		D2E62964DDD37B810A367C74 /* ScoreboardClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardClientTests.swift; sourceTree = "<group>"; };
+		D519650FA4992B37878B5C78 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		D69944A08E770B9A508DCDBF /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		D9FB77EFB3B3FD06F8D2BE49 /* ScoreStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStoreTests.swift; sourceTree = "<group>"; };
+		E17DF103E7F52C0490E93CC8 /* ScoringFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringFlowUITests.swift; sourceTree = "<group>"; };
 		E6D25153FFA69B49B3DDB67B /* ScoreboardWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreboardWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49C7A61C7BCBD4AFC2341D6 /* ScoreboardWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardWatchApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		25915CAE4E744DCF5A5E36FC /* ScoreboardWatchUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E17DF103E7F52C0490E93CC8 /* ScoringFlowUITests.swift */,
+			);
+			path = ScoreboardWatchUITests;
+			sourceTree = "<group>";
+		};
 		54775E2F479C9A13FB4EA32F = {
 			isa = PBXGroup;
 			children = (
 				5D4A4174CC72A34AF40962E4 /* ScoreboardWatch */,
 				A825DF44E814F714DD7E9599 /* ScoreboardWatchTests */,
+				25915CAE4E744DCF5A5E36FC /* ScoreboardWatchUITests */,
 				E653D32211B51DB3474D358A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,6 +102,7 @@
 				F49C7A61C7BCBD4AFC2341D6 /* ScoreboardWatchApp.swift */,
 				E35B81A853E258B30004F76A /* Model */,
 				B1F4F07882337E305C2CA0AC /* Sync */,
+				FC2A20977F13FAB7CB9EC8D6 /* Views */,
 			);
 			path = ScoreboardWatch;
 			sourceTree = "<group>";
@@ -89,6 +123,7 @@
 				3148BAEEA3277F286F7BFAE5 /* ScoreboardTests.swift */,
 				6EB224AA57A9710466A8503F /* ScoreboardXMLTests.swift */,
 				D9FB77EFB3B3FD06F8D2BE49 /* ScoreStoreTests.swift */,
+				BCE48EA0D0D360D8ACAA1F0A /* TeamColorTests.swift */,
 				73CD37AF3829F8DD472D55AB /* Fixtures */,
 			);
 			path = ScoreboardWatchTests;
@@ -118,8 +153,22 @@
 			children = (
 				E6D25153FFA69B49B3DDB67B /* ScoreboardWatch.app */,
 				9713AE95E162CDF8B469FA5C /* ScoreboardWatchTests.xctest */,
+				7E628115390E1632B12B0B6D /* ScoreboardWatchUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FC2A20977F13FAB7CB9EC8D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8162608187213D9D4AF3B5BC /* ConfigView.swift */,
+				5059EE258665B82A7605EC37 /* NamesView.swift */,
+				D519650FA4992B37878B5C78 /* PointsView.swift */,
+				085BECCC4F033E30A7C1A1FA /* SetsView.swift */,
+				AEF00FEE0221EDF8D89B5257 /* SyncBadge.swift */,
+				B4ED9135F48A9B56C50CEDDD /* TeamColor.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +191,24 @@
 			productName = ScoreboardWatch;
 			productReference = E6D25153FFA69B49B3DDB67B /* ScoreboardWatch.app */;
 			productType = "com.apple.product-type.application";
+		};
+		946A4D8291C023196E0437F2 /* ScoreboardWatchUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD49AB547CB2522F595BEF19 /* Build configuration list for PBXNativeTarget "ScoreboardWatchUITests" */;
+			buildPhases = (
+				C4B7DB400D0623E173802914 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9319DC35282A92386A02ABAA /* PBXTargetDependency */,
+			);
+			name = ScoreboardWatchUITests;
+			packageProductDependencies = (
+			);
+			productName = ScoreboardWatchUITests;
+			productReference = 7E628115390E1632B12B0B6D /* ScoreboardWatchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		E722871AB3FA1683AB8B5038 /* ScoreboardWatchTests */ = {
 			isa = PBXNativeTarget;
@@ -175,6 +242,11 @@
 						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
+					946A4D8291C023196E0437F2 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+						TestTargetID = 181CAFF99FE73E0CA43C4BE2;
+					};
 					E722871AB3FA1683AB8B5038 = {
 						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
@@ -197,6 +269,7 @@
 			targets = (
 				181CAFF99FE73E0CA43C4BE2 /* ScoreboardWatch */,
 				E722871AB3FA1683AB8B5038 /* ScoreboardWatchTests */,
+				946A4D8291C023196E0437F2 /* ScoreboardWatchUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -230,6 +303,7 @@
 				4A4CECCE13D07A8D1B158EE6 /* ScoreboardClientTests.swift in Sources */,
 				A7B7A7A3BCAE1D95C62CE7BD /* ScoreboardTests.swift in Sources */,
 				D571B3A4A3A68DEB0078941E /* ScoreboardXMLTests.swift in Sources */,
+				A3D726BDB9E27DCE0CCAB9F8 /* TeamColorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,18 +311,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BE8A33DC4F0A7695D8FAC9A /* ConfigView.swift in Sources */,
 				152724223C709715C1CFA348 /* Credentials.swift in Sources */,
+				4B9DE43D5C520852B62F5FA4 /* NamesView.swift in Sources */,
+				FD29BC0631587A3BAA72C1D6 /* PointsView.swift in Sources */,
 				88BFB1EB684FCF8F669560D3 /* ScoreStore.swift in Sources */,
 				3169133617612962AFE648C3 /* Scoreboard.swift in Sources */,
 				D0758645C88EAF04577266F9 /* ScoreboardClient.swift in Sources */,
 				F895509861BBACFC049C9079 /* ScoreboardWatchApp.swift in Sources */,
 				9AB8375C8CA777552E78C28B /* ScoreboardXML.swift in Sources */,
+				CAB7586E50FEAAE7320175EE /* SetsView.swift in Sources */,
+				BCA62959DB3428B30509A36B /* SyncBadge.swift in Sources */,
+				57EFFA206FCA9A0DC1FB72F2 /* TeamColor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4B7DB400D0623E173802914 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				231056F5F7FEB02A8981F4CD /* ScoringFlowUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9319DC35282A92386A02ABAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 181CAFF99FE73E0CA43C4BE2 /* ScoreboardWatch */;
+			targetProxy = B3959683C4C251D6B38C169A /* PBXContainerItemProxy */;
+		};
 		BA01A6A2E8DB54771C89D0D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 181CAFF99FE73E0CA43C4BE2 /* ScoreboardWatch */;
@@ -334,6 +427,24 @@
 				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
+		};
+		79F0B4A0ED28D84E8795D562 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.lindhardsen.scoreboard.watchkitapp.uitests;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = ScoreboardWatch;
+			};
+			name = Debug;
 		};
 		9BB42BB1ACF54C143D41F749 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -452,6 +563,24 @@
 			};
 			name = Debug;
 		};
+		DC04E9F3B69E4B0C0354C9BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.lindhardsen.scoreboard.watchkitapp.uitests;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = ScoreboardWatch;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -478,6 +607,15 @@
 			buildConfigurations = (
 				B77C432FAD426A61AF852145 /* Debug */,
 				63D4F1EA154EDAF8F1FDE82F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AD49AB547CB2522F595BEF19 /* Build configuration list for PBXNativeTarget "ScoreboardWatchUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79F0B4A0ED28D84E8795D562 /* Debug */,
+				DC04E9F3B69E4B0C0354C9BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
