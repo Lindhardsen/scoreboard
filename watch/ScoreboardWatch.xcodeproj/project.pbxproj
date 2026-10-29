@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3169133617612962AFE648C3 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C432F4A2677E73534E7622A8 /* Scoreboard.swift */; };
+		A7B7A7A3BCAE1D95C62CE7BD /* ScoreboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148BAEEA3277F286F7BFAE5 /* ScoreboardTests.swift */; };
+		E90C621DEF6364322B7C4490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E842D201E67CD18A67EDD5 /* Assets.xcassets */; };
+		F895509861BBACFC049C9079 /* ScoreboardWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49C7A61C7BCBD4AFC2341D6 /* ScoreboardWatchApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E14F58C5E8AF435C43454A62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C4B4DAE691FB6974497C998 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 181CAFF99FE73E0CA43C4BE2;
+			remoteInfo = ScoreboardWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0CF40F546B2FF026AC8803AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3148BAEEA3277F286F7BFAE5 /* ScoreboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardTests.swift; sourceTree = "<group>"; };
+		53E842D201E67CD18A67EDD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9713AE95E162CDF8B469FA5C /* ScoreboardWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoreboardWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C432F4A2677E73534E7622A8 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
+		E6D25153FFA69B49B3DDB67B /* ScoreboardWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreboardWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F49C7A61C7BCBD4AFC2341D6 /* ScoreboardWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardWatchApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		54775E2F479C9A13FB4EA32F = {
+			isa = PBXGroup;
+			children = (
+				5D4A4174CC72A34AF40962E4 /* ScoreboardWatch */,
+				A825DF44E814F714DD7E9599 /* ScoreboardWatchTests */,
+				E653D32211B51DB3474D358A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5D4A4174CC72A34AF40962E4 /* ScoreboardWatch */ = {
+			isa = PBXGroup;
+			children = (
+				53E842D201E67CD18A67EDD5 /* Assets.xcassets */,
+				0CF40F546B2FF026AC8803AB /* Info.plist */,
+				F49C7A61C7BCBD4AFC2341D6 /* ScoreboardWatchApp.swift */,
+				E35B81A853E258B30004F76A /* Model */,
+			);
+			path = ScoreboardWatch;
+			sourceTree = "<group>";
+		};
+		A825DF44E814F714DD7E9599 /* ScoreboardWatchTests */ = {
+			isa = PBXGroup;
+			children = (
+				3148BAEEA3277F286F7BFAE5 /* ScoreboardTests.swift */,
+			);
+			path = ScoreboardWatchTests;
+			sourceTree = "<group>";
+		};
+		E35B81A853E258B30004F76A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C432F4A2677E73534E7622A8 /* Scoreboard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E653D32211B51DB3474D358A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E6D25153FFA69B49B3DDB67B /* ScoreboardWatch.app */,
+				9713AE95E162CDF8B469FA5C /* ScoreboardWatchTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		181CAFF99FE73E0CA43C4BE2 /* ScoreboardWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01C8D9E5429A24C99AF8D650 /* Build configuration list for PBXNativeTarget "ScoreboardWatch" */;
+			buildPhases = (
+				5573FFD7D65E5F276F906CE8 /* Sources */,
+				C9396F1A017195D56D65D50E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScoreboardWatch;
+			packageProductDependencies = (
+			);
+			productName = ScoreboardWatch;
+			productReference = E6D25153FFA69B49B3DDB67B /* ScoreboardWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E722871AB3FA1683AB8B5038 /* ScoreboardWatchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 247506BCDC7AA9A23C4F1F16 /* Build configuration list for PBXNativeTarget "ScoreboardWatchTests" */;
+			buildPhases = (
+				39E622427904AFC97FD1C69D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA01A6A2E8DB54771C89D0D9 /* PBXTargetDependency */,
+			);
+			name = ScoreboardWatchTests;
+			packageProductDependencies = (
+			);
+			productName = ScoreboardWatchTests;
+			productReference = 9713AE95E162CDF8B469FA5C /* ScoreboardWatchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C4B4DAE691FB6974497C998 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					181CAFF99FE73E0CA43C4BE2 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					E722871AB3FA1683AB8B5038 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A9B3F84016523F0634C219E5 /* Build configuration list for PBXProject "ScoreboardWatch" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 54775E2F479C9A13FB4EA32F;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E653D32211B51DB3474D358A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				181CAFF99FE73E0CA43C4BE2 /* ScoreboardWatch */,
+				E722871AB3FA1683AB8B5038 /* ScoreboardWatchTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9396F1A017195D56D65D50E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E90C621DEF6364322B7C4490 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		39E622427904AFC97FD1C69D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7B7A7A3BCAE1D95C62CE7BD /* ScoreboardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5573FFD7D65E5F276F906CE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3169133617612962AFE648C3 /* Scoreboard.swift in Sources */,
+				F895509861BBACFC049C9079 /* ScoreboardWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA01A6A2E8DB54771C89D0D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 181CAFF99FE73E0CA43C4BE2 /* ScoreboardWatch */;
+			targetProxy = E14F58C5E8AF435C43454A62 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		08BF11AF69E4CDCC9DEF6817 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.lindhardsen.scoreboard.watchkitapp.tests;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScoreboardWatch.app/ScoreboardWatch";
+			};
+			name = Release;
+		};
+		63D4F1EA154EDAF8F1FDE82F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		9BB42BB1ACF54C143D41F749 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScoreboardWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Scoreboard;
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.lindhardsen.scoreboard.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+		A095E8E67DDFA527FC225699 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScoreboardWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Scoreboard;
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.lindhardsen.scoreboard.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		B7626DC7BF477AB739AEEAA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.lindhardsen.scoreboard.watchkitapp.tests;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScoreboardWatch.app/ScoreboardWatch";
+			};
+			name = Debug;
+		};
+		B77C432FAD426A61AF852145 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		01C8D9E5429A24C99AF8D650 /* Build configuration list for PBXNativeTarget "ScoreboardWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A095E8E67DDFA527FC225699 /* Debug */,
+				9BB42BB1ACF54C143D41F749 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		247506BCDC7AA9A23C4F1F16 /* Build configuration list for PBXNativeTarget "ScoreboardWatchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7626DC7BF477AB739AEEAA3 /* Debug */,
+				08BF11AF69E4CDCC9DEF6817 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A9B3F84016523F0634C219E5 /* Build configuration list for PBXProject "ScoreboardWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B77C432FAD426A61AF852145 /* Debug */,
+				63D4F1EA154EDAF8F1FDE82F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C4B4DAE691FB6974497C998 /* Project object */;
+}

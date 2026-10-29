@@ -1,0 +1,50 @@
+name: ScoreboardWatch
+options:
+  bundleIdPrefix: org.lindhardsen.scoreboard
+  deploymentTarget:
+    watchOS: "11.0"
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+targets:
+  ScoreboardWatch:
+    type: application
+    platform: watchOS
+    sources: [ScoreboardWatch]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.lindhardsen.scoreboard.watchkitapp
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Scoreboard
+        INFOPLIST_KEY_WKApplication: YES
+        INFOPLIST_KEY_WKWatchOnly: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    info:
+      path: ScoreboardWatch/Info.plist
+      properties:
+        ITSAppUsesNonExemptEncryption: false
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+  ScoreboardWatchTests:
+    type: bundle.unit-test
+    platform: watchOS
+    sources: [ScoreboardWatchTests]
+    dependencies:
+      - target: ScoreboardWatch
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.lindhardsen.scoreboard.watchkitapp.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/ScoreboardWatch.app/ScoreboardWatch"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+schemes:
+  ScoreboardWatch:
+    build:
+      targets:
+        ScoreboardWatch: all
+    test:
+      targets: [ScoreboardWatchTests]
