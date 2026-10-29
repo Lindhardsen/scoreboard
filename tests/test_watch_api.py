@@ -21,7 +21,7 @@ class WatchApiTests(unittest.TestCase):
         directory = tempfile.TemporaryDirectory()
         self.addCleanup(directory.cleanup)
         self.directory = Path(directory.name)
-        for name in ('server.py', 'password_support.py', 'scraper.py'):
+        for name in ('server.py', 'password_support.py', 'score_status.py'):
             shutil.copyfile(ROOT / name, self.directory / name)
         (self.directory / 'users.json').write_text(json.dumps({'users': {'test-user': {
             'password_hash': generate_password_hash('pw', method='pbkdf2:sha256:600000'),
@@ -61,32 +61,14 @@ class WatchApiTests(unittest.TestCase):
             'token': 'tok-123', 'filename': 'scoreboard.xml', 'filedata': filedata,
         })
 
-    def test_upload_writes_json_sidecar(self):
+    def test_watch_upload_is_served_by_score_api(self):
+        # The watch uploads the same XML structure as the web controller.
         response = self.upload((ROOT / 'html/scoreboard.xml').read_text(encoding='utf-8'))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, b'OK')
-        expected = {
-            'home': {'name': 'Eksjö Volleyboll IK', 'sets': 1, 'points': 12},
-            'away': {'name': 'Gislaveds VBK C', 'sets': 0, 'points': 7},
-            'matchEnded': False,
-        }
-        path = self.directory / 'data/test-user/scoreboard.json'
-        self.assertEqual(json.loads(path.read_text(encoding='utf-8')), expected)
-        self.assertEqual(self.client.get('/test-user/api/score').json, expected)
-
-    def test_upload_with_unparseable_xml_still_ok(self):
-        response = self.upload('<div>broken')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, b'OK')
-        self.assertTrue((self.directory / 'data/test-user/scoreboard.xml').exists())
-        self.assertFalse((self.directory / 'data/test-user/scoreboard.json').exists())
-
-    def test_upload_escaped_name_round_trips(self):
-        xml = (ROOT / 'html/scoreboard.xml').read_text(encoding='utf-8').replace(
-            'Eksjö Volleyboll IK', 'A &amp; B')
-        self.assertEqual(self.upload(xml).status_code, 200)
-        score = json.loads((self.directory / 'data/test-user/scoreboard.json').read_text(encoding='utf-8'))
-        self.assertEqual(score['home']['name'], 'A & B')
+        score = self.client.get('/test-user/api/score').json
+        self.assertEqual(score['home'], {'name': 'Eksjö Volleyboll IK', 'sets': 1, 'points': 12})
+        self.assertEqual(score['away'], {'name': 'Gislaveds VBK C', 'sets': 0, 'points': 7})
 
     def test_upload_reports_running_scraper(self):
         xml = (ROOT / 'html/scoreboard.xml').read_text(encoding='utf-8')

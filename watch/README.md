@@ -24,8 +24,8 @@ username and password. The watch exchanges the password for your upload token vi
 `POST /<username>/api/token` and keeps only the token, in the Keychain. If the token
 in `users.json` changes, the watch signs out and asks again.
 
-The server must include the watch API (token endpoint, JSON feed on manual
-uploads, `X-Scraper-Running` header) — deploy and restart it before signing in.
+The server must include the watch API (token endpoint and `X-Scraper-Running`
+header on uploads) — deploy and restart it before signing in.
 
 ## Building
 

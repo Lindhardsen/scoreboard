@@ -23,7 +23,6 @@ import secrets
 import tempfile
 from score_status import read_score, format_status
 from collections import defaultdict
-import xml.etree.ElementTree as ET
 from werkzeug.security import check_password_hash
 from password_support import require_password_hashing
 
@@ -364,28 +363,6 @@ def user_serve_file(username, filename):
     
     abort(404)
 
-def _scoreboard_state_from_xml(xml_text):
-    """Read team names, sets and points from an uploaded scoreboard XML, or None if unreadable."""
-    try:
-        root = ET.fromstring(xml_text)
-    except ET.ParseError:
-        return None
-    elements = {el.get('id'): el for el in root.iter() if el.get('id')}
-    state = {'matchEnded': False}
-    for side in ('home', 'away'):
-        team = elements.get(side + '_team')
-        if team is None:
-            return None
-        # Scraped scoreboards drop the score elements once a match has ended.
-        counts = [(elements[side + suffix].text if side + suffix in elements else None) or '0'
-                  for suffix in ('_set', '_score')]
-        try:
-            sets, points = (int(count.strip() or 0) for count in counts)
-        except ValueError:
-            return None
-        state[side] = {'name': (team.text or '').strip(), 'sets': sets, 'points': points}
-    return state
-
 @app.route('/<username>/upload.php', methods=['POST'])
 def user_upload(username):
     """Handle scoreboard updates for a specific user."""
@@ -424,12 +401,6 @@ def user_upload(username):
         finally:
             if temporary_path and os.path.exists(temporary_path):
                 os.unlink(temporary_path)
-
-        # Keep the JSON score feed current in manual mode too (the scraper writes it otherwise).
-        state = _scoreboard_state_from_xml(filedata)
-        if state is not None:
-            import scraper  # deferred: scraper pulls in requests, which nothing else here needs
-            scraper.write_scoreboard_json(state, filepath)
 
         response = make_response('OK', 200)
         # Tell manual clients (the Watch app) their points will be overwritten by the scraper.
