@@ -408,6 +408,26 @@ def user_score(username):
         abort(404)
     return send_file(json_path, mimetype='application/json')
 
+@app.route('/<username>/api/token', methods=['POST'])
+def user_token(username):
+    """Exchange the user's password for their upload token (for the Watch app,
+    which has no session cookie). Shares the login rate limit."""
+    if not validate_username(username) or not get_user(username):
+        abort(404)
+
+    ip_address = request.remote_addr
+    if not check_rate_limit(ip_address):
+        return jsonify({'error': 'Too many failed login attempts. Please try again in 5 minutes.'}), 429
+
+    payload = request.get_json(silent=True) or {}
+    password = payload.get('password') or request.values.get('password') or ''
+    if not validate_password(username, password):
+        record_login_attempt(ip_address)
+        return jsonify({'error': 'Incorrect username or password.'}), 401
+
+    LOGIN_ATTEMPTS.pop(ip_address, None)
+    return jsonify({'token': get_user(username).get('token', '')})
+
 @app.route('/<username>/api/scraper/status', methods=['GET'])
 def user_scraper_status(username):
     """Return JSON status for user's scraper process."""
