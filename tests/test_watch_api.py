@@ -7,6 +7,7 @@ import shutil
 import tempfile
 import time
 import unittest
+from unittest.mock import Mock
 
 from werkzeug.security import generate_password_hash
 
@@ -54,6 +55,44 @@ class WatchApiTests(unittest.TestCase):
     def test_token_unknown_user_404(self):
         self.assertEqual(self.client.post('/nobody/api/token', data={'password': 'pw'}).status_code, 404)
         self.assertEqual(self.client.post('/Bad_User/api/token', data={'password': 'pw'}).status_code, 404)
+
+    def upload(self, filedata):
+        return self.client.post('/test-user/upload.php', data={
+            'token': 'tok-123', 'filename': 'scoreboard.xml', 'filedata': filedata,
+        })
+
+    def test_upload_writes_json_sidecar(self):
+        response = self.upload((ROOT / 'html/scoreboard.xml').read_text(encoding='utf-8'))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, b'OK')
+        expected = {
+            'home': {'name': 'Eksjö Volleyboll IK', 'sets': 1, 'points': 12},
+            'away': {'name': 'Gislaveds VBK C', 'sets': 0, 'points': 7},
+            'matchEnded': False,
+        }
+        path = self.directory / 'data/test-user/scoreboard.json'
+        self.assertEqual(json.loads(path.read_text(encoding='utf-8')), expected)
+        self.assertEqual(self.client.get('/test-user/api/score').json, expected)
+
+    def test_upload_with_unparseable_xml_still_ok(self):
+        response = self.upload('<div>broken')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, b'OK')
+        self.assertTrue((self.directory / 'data/test-user/scoreboard.xml').exists())
+        self.assertFalse((self.directory / 'data/test-user/scoreboard.json').exists())
+
+    def test_upload_escaped_name_round_trips(self):
+        xml = (ROOT / 'html/scoreboard.xml').read_text(encoding='utf-8').replace(
+            'Eksjö Volleyboll IK', 'A &amp; B')
+        self.assertEqual(self.upload(xml).status_code, 200)
+        score = json.loads((self.directory / 'data/test-user/scoreboard.json').read_text(encoding='utf-8'))
+        self.assertEqual(score['home']['name'], 'A & B')
+
+    def test_upload_reports_running_scraper(self):
+        xml = (ROOT / 'html/scoreboard.xml').read_text(encoding='utf-8')
+        self.assertNotIn('X-Scraper-Running', self.upload(xml).headers)
+        self.ns['_get_user_state']('test-user')['process'] = Mock(poll=Mock(return_value=None))
+        self.assertEqual(self.upload(xml).headers.get('X-Scraper-Running'), '1')
 
 
 if __name__ == '__main__':
