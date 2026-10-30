@@ -88,6 +88,11 @@ struct LoadingBoardView: View {
                 Button("Try again") {
                     Task { await store.refresh() }
                 }
+                // Settings live on a page that isn't shown until the board loads,
+                // so a wrong server or user must be fixable from here.
+                Button("Sign out", role: .destructive) {
+                    store.signOut()
+                }
             } else {
                 ProgressView()
                 Text("Loading scoreboard…")
