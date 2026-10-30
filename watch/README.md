@@ -56,20 +56,26 @@ xcodebuild test -project ScoreboardWatch.xcodeproj -scheme ScoreboardWatchUITest
 
 One-time, in [App Store Connect](https://appstoreconnect.apple.com):
 
-1. Apps → `+` → New App: platform watchOS, name e.g. "Scoreboard Watch",
-   bundle ID `org.lindhardsen.scoreboard.watchkitapp` (register it under
-   Certificates, Identifiers & Profiles first if it isn't offered).
+1. Apps → `+` → New App: platform **iOS** (App Store Connect files watchOS
+   apps under iOS), name e.g. "Scoreboard Watch", bundle ID
+   `org.lindhardsen.scoreboard.watchkitapp`.
 2. TestFlight → Internal Testing → add yourself as a tester.
+
+App Store Connect only accepts a watch-only app inside an iOS stub that embeds
+it, so the upload is archived from the `Scoreboard` scheme: an iOS container
+(`org.lindhardsen.scoreboard.watchkitapp`, the bundle ID registered in App Store
+Connect) holding the watch app (`….watchkitapp.watchkitapp`). Archiving the
+`ScoreboardWatch` scheme on its own only offers ad hoc/development export.
 
 Each build (bump `CURRENT_PROJECT_VERSION` in `project.yml` first):
 
 ```bash
 cd watch
 xcodegen generate
-xcodebuild -project ScoreboardWatch.xcodeproj -scheme ScoreboardWatch \
-  -destination 'generic/platform=watchOS' \
-  -archivePath build/ScoreboardWatch.xcarchive archive -allowProvisioningUpdates
-xcodebuild -exportArchive -archivePath build/ScoreboardWatch.xcarchive \
+xcodebuild -project ScoreboardWatch.xcodeproj -scheme Scoreboard \
+  -destination 'generic/platform=iOS' \
+  -archivePath build/Scoreboard.xcarchive archive -allowProvisioningUpdates
+xcodebuild -exportArchive -archivePath build/Scoreboard.xcarchive \
   -exportOptionsPlist ExportOptions.plist -exportPath build/export -allowProvisioningUpdates
 ```
 
